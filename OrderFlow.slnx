@@ -1,0 +1,18 @@
+<Solution>
+  <Folder Name="/0 - Presentation/">
+    <Project Path="Src/OrderFlow.Api/OrderFlow.Api.csproj" Id="91560a71-b704-42ab-b178-bc45f4b0b5fb" />
+  </Folder>
+  <Folder Name="/1 - Application/">
+    <Project Path="Src/OrderFlow.Application/OrderFlow.Application.csproj" Id="87b63afb-013b-4035-8b88-90fdea72c129" />
+  </Folder>
+  <Folder Name="/2 - Domain/">
+    <Project Path="Src/OrderFlow.Domain/OrderFlow.Domain.csproj" Id="7dac813a-d8a9-47e4-a0f4-cefb19c6629a" />
+  </Folder>
+  <Folder Name="/3 - Infrastructure/">
+    <Project Path="Src/OrderFlow.Infrastructure/OrderFlow.Infrastructure.csproj" Id="a511fe8d-87d7-4aaf-bb0e-1febfc980dc4" />
+  </Folder>
+  <Folder Name="/4 - Integrations/">
+    <Project Path="Src/OrderFlow.Integrations/OrderFlow.Integrations.csproj" />
+    <Project Path="Src/OrderFlow.Integrations.Tests/OrderFlow.Integrations.Tests.csproj" />
+  </Folder>
+</Solution>

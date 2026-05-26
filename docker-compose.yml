@@ -1,0 +1,27 @@
+services:
+  toxiproxy:
+    image: ghcr.io/shopify/toxiproxy:2.9.0
+    ports:
+      - "8474:8474"
+      - "8475:8475"
+    volumes:
+      - ./toxiproxy.json:/config/toxiproxy.json
+    command: ["-config", "/config/toxiproxy.json", "-host", "0.0.0.0"]
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:8475/proxies"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5253:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ToxiProxy__BaseUrl=http://toxiproxy:8474
+    depends_on:
+      toxiproxy:
+        condition: service_healthy

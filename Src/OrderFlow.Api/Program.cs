@@ -1,23 +1,56 @@
-var builder = WebApplication.CreateBuilder(args);
+using OrderFlow.Api;
+using OrderFlow.Api.Endpoints.Pokemon;
+using OrderFlow.Application;
+using OrderFlow.Domain;
+using OrderFlow.Infrastructure;
+using Serilog;
 
-// Add services to the container.
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .CreateBootstrapLogger();
 
-builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+try
 {
-    app.MapOpenApi();
+    var builder = WebApplication.CreateBuilder(args);
+
+    builder.Host.UseSerilog((context, services, configuration) =>
+    {
+        configuration
+            .ReadFrom.Configuration(context.Configuration)
+            .ReadFrom.Services(services)
+            .Enrich.FromLogContext()
+            .WriteTo.Console();
+    });
+
+    builder.Services.AddOpenApi();
+
+    var pokeApiBaseUrl = builder.Configuration["ToxiProxy:BaseUrl"]
+        ?? builder.Configuration["PokeApi:BaseUrl"]
+        ?? "https://pokeapi.co";
+
+    builder.Services
+        .AddDomain()
+        .AddApplication()
+        .AddInfrastructure(pokeApiBaseUrl)
+        .AddApi();
+
+    var app = builder.Build();
+
+    if (app.Environment.IsDevelopment())
+        app.MapOpenApi();
+
+    app.UseApiMiddlewares();
+    app.UseHttpsRedirection();
+
+    app.MapPokemonEndpoints();
+
+    app.Run();
 }
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.Run();
+catch (Exception ex)
+{
+    Log.Fatal(ex, "Aplicação encerrada inesperadamente");
+}
+finally
+{
+    Log.CloseAndFlush();
+}

@@ -11,9 +11,6 @@
   <Folder Name="/3 - Infrastructure/">
     <Project Path="Src/OrderFlow.Infrastructure/OrderFlow.Infrastructure.csproj" Id="a511fe8d-87d7-4aaf-bb0e-1febfc980dc4" />
   </Folder>
-  <Folder Name="/4 - Integrations/">
-    <Project Path="Src/OrderFlow.Integrations/OrderFlow.Integrations.csproj" />
-  </Folder>
   <Folder Name="/SolutionItems/">
     <File Path=".gitignore" />
     <File Path="docker-compose.yml" />
@@ -23,6 +20,9 @@
     <File Path="toxiproxy.json" />
   </Folder>
   <Folder Name="/Tests/">
-    <Project Path="Src/OrderFlow.Integrations.Tests/OrderFlow.Integrations.Tests.csproj" />
+    <Folder Name="/Tests/3 - Infrastructure/">
+      <Project Path="Src/OrderFlow.Infrastructure.Tests/OrderFlow.Infrastructure.Tests.csproj" />
+    </Folder>
+    <Project Path="Src/OrderFlow.Infrastructure.Tests/OrderFlow.Infrastructure.Tests.csproj" />
   </Folder>
 </Solution>

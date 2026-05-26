@@ -46,7 +46,15 @@
       "Bash(dotnet new xunit *)",
       "Bash(docker-compose up *)",
       "Bash(docker compose up *)",
-      "Bash(powershell.exe *)"
+      "Bash(powershell.exe *)",
+      "Bash(New-Item -ItemType Directory -Force -Path \"C:\\\\projects\\\\orderflow\\\\Src\\\\OrderFlow.Infrastructure\\\\Integrations\\\\Apis\")",
+      "Bash(Out-Null)",
+      "Bash(New-Item -ItemType Directory -Force -Path \"C:\\\\projects\\\\orderflow\\\\Src\\\\OrderFlow.Infrastructure\\\\Integrations\\\\Aws\")",
+      "Bash(New-Item -ItemType Directory -Force -Path \"C:\\\\projects\\\\orderflow\\\\Src\\\\OrderFlow.Infrastructure\\\\Integrations\\\\Kafka\")",
+      "Bash(New-Item -ItemType Directory -Force -Path \"C:\\\\projects\\\\orderflow\\\\Src\\\\OrderFlow.Infrastructure\\\\Integrations\\\\RabbitMq\")",
+      "Bash(New-Item -ItemType Directory -Force -Path \"C:\\\\projects\\\\orderflow\\\\Src\\\\OrderFlow.Infrastructure\\\\Messaging\")",
+      "Bash(New-Item -ItemType Directory -Force -Path \"C:\\\\projects\\\\orderflow\\\\Src\\\\OrderFlow.Infrastructure\\\\Policies\")",
+      "Bash(Write-Output \"Pastas criadas\")"
     ]
   }
 }

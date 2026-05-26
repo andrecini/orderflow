@@ -13,6 +13,16 @@
   </Folder>
   <Folder Name="/4 - Integrations/">
     <Project Path="Src/OrderFlow.Integrations/OrderFlow.Integrations.csproj" />
+  </Folder>
+  <Folder Name="/SolutionItems/">
+    <File Path=".gitignore" />
+    <File Path="docker-compose.yml" />
+    <File Path="Dockerfile" />
+    <File Path="LICENSE" />
+    <File Path="README.md" />
+    <File Path="toxiproxy.json" />
+  </Folder>
+  <Folder Name="/Tests/">
     <Project Path="Src/OrderFlow.Integrations.Tests/OrderFlow.Integrations.Tests.csproj" />
   </Folder>
 </Solution>
